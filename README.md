@@ -1,6 +1,6 @@
 ### Travis
 
-- [![Build Status](https://travis-ci.org/lovedota/react-redux-saga-lazy-load.svg?branch=master)](https://travis-ci.org/lovedota/react-redux-saga-lazy-load)
+- [![Build Status](https://travis-ci.org/lovedota/dacaukieng.svg?branch=master)](https://travis-ci.org/lovedota/dacaukieng)
 
 ### Description
 
