@@ -3,18 +3,18 @@ cache:
   directories:
   - node_modules
 node_js:
-  - "6"
+- '6'
 install: true
 before_script:
-  - npm i -g npm@5.6.0
-  - npm i -g webpack@3.10.0
-  - npm install
+- npm i -g npm@5.6.0
+- npm i -g webpack@3.10.0
+- npm install
 script:
-  - npm run test
-  - npm run prod
+- npm run test
+- npm run prod
 deploy:
   provider: heroku
   api_key:
-    secure: ...
+    secure: ooOHoUSysoJcVo8Grk55NicvDQcVFxY7wXkXKzU18j1GSYHPFFxbxJTslgoCC5FMQfYsd2nkO1n5yqfMk5CCn0SjM/epqPi4JFQKoU2zcuPZBWbN39jdwCvxLP80TaLbt8GWuRLWUSiJAEqkFBplyefG7l+nYI8Y+uZ1+F5PI2FsXHNCOr+iWBTG2QDGS3ZenQt/1vtZeK/dJoD+WvtcWe9beDhyVhBmgGNbHD3xsH8iz5RF+uL+uGYM9BpOwwXgiW5jX6Z1PChT24lLQbRJvkRKBz3n1QKb4gDDqpd+a1q3Cq6zFLNdbZBRx/7WxTW4B3ZlY1Y1bIPRx+s/pi2AcMKeEuRgE9uLu6V2VzTW8m1SyuT+itj6L9WwoLkf2ecSs8/qwIf7kORk/7eh7aHYs47GQN3OQArR0TIKASZq0y19EGQA9un7K2yId0TKzziC3IaVIWC8mZ/g/csi11Ytq7ERS5t7jNwBIZXt8YRNnsBDylCkc5Rx8qSIrTQKulbW4/Y4KKP1yZnNxGU3hp0X0Pjm8DFNovleH55LInG+7dBC0ANz9klr9bh0Sl1A2x/ZCBHytk+ljY6R1IYmvKYvUQ1qNmGLhf2FrB+rVR0O/dC/+WaUSz5C/dD9K0uwTUml3gsovrpIpRFE95KUuiU3ASA6cYlAIBIeS3IM10FLI4Q=
   app: lovedota-nytimes
   skip_cleanup: true
