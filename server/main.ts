@@ -47,5 +47,5 @@ function onListening() {
         ? 'pipe ' + addr
         : 'port ' + addr.port;
 
-    console.log('Running in localhost:5000');
+    console.log('Running in localhost:8080');
 }

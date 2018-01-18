@@ -3,13 +3,16 @@ import * as path from 'path';
 import * as appRoot from 'app-root-path';
 import * as web from 'express-decorators';
 import app from '../app';
+import { setTimeout } from 'timers';
+
+const ITEMS_PER_PAGE = 10;
 
 @web.basePath('/api/home')
 class HomeController {
     @web.get('/video')
     async getVideo(req: any, res: any) {
         // tslint:disable-next-line:no-console
-        console.log(req.params);
+        const { page } = req.query;
 
         fs.readFile(path.resolve(appRoot.path, './server/fixtures/video.json'), 'utf8', (err, data) => {
             if (err) {
@@ -19,7 +22,7 @@ class HomeController {
             const jsonObjects = JSON.parse(data);
 
             res.json({
-                items: jsonObjects.data,
+                items: jsonObjects.data.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE),
                 total: jsonObjects.data.length
             });
         });
