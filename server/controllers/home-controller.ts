@@ -7,13 +7,21 @@ import app from '../app';
 @web.basePath('/api/home')
 class HomeController {
     @web.get('/video')
-    async getVideo(req, res) {
+    async getVideo(req: any, res: any) {
+        // tslint:disable-next-line:no-console
+        console.log(req.params);
+
         fs.readFile(path.resolve(appRoot.path, './server/fixtures/video.json'), 'utf8', (err, data) => {
             if (err) {
                 res.json(err).status(500);
             }
 
-            res.json(JSON.parse(data));
+            const jsonObjects = JSON.parse(data);
+
+            res.json({
+                items: jsonObjects.data,
+                total: jsonObjects.data.length
+            });
         });
     }
 }

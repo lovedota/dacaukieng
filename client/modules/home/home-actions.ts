@@ -14,6 +14,11 @@ export default {
     },
 
     viewArticle(item) {
-        window.open(item.url, '_blank');
+        dispatch({
+            type: 'home/view-details',
+            data: {
+                item
+            }
+        });
     }
 };

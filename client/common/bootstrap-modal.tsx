@@ -6,16 +6,22 @@ interface Props {
     onHidden?: () => void;
     confirm?: string;
     cancel?: string;
-    title?: string;
+    title: string;
+    show?: boolean;
 }
 
 class BootstrapModal extends React.Component<Props> {
     element: any;
+    div: any;
 
     componentDidMount() {
-        this.element = $(this.refs.root);
-        this.element.modal({ backdrop: 'static', keyboard: false, show: false });
+        this.element = $(this.div);
+        this.element.modal({ backdrop: 'static', keyboard: true, show: false });
         this.element.on('hidden.bs.modal', this.handleHidden.bind(this));
+
+        if (this.props.show) {
+            this.open();
+        }
     }
 
     componentWillUnmount() {
@@ -37,7 +43,7 @@ class BootstrapModal extends React.Component<Props> {
         if (this.props.confirm) {
             confirmButton = (
                 <button
-                    onClick={this.handleConfirm.bind(this)}
+                    onClick={() => this.handleConfirm()}
                     className="btn btn-primary">
                     {this.props.confirm}
                 </button>
@@ -46,14 +52,14 @@ class BootstrapModal extends React.Component<Props> {
 
         if (this.props.cancel) {
             cancelButton = (
-                <button onClick={this.handleCancel.bind(this)} className="btn btn-default">
+                <button onClick={() => this.handleCancel()} className="btn btn-default">
                     {this.props.cancel}
                 </button>
             );
         }
 
         return (
-            <div className="modal fade" ref="root">
+            <div className="modal fade" ref={(c) => this.div = c}>
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">

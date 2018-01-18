@@ -22,15 +22,15 @@ function* fetchItems(action) {
    try {
       const { q, page, isLoaded } = yield select((state: any) => state.home);
 
-      const { data } = yield HomeServices.getNews(q, page);
+      const { data } = yield HomeServices.getVideo(page);
 
-      const { docs, meta } = data.response;
+      const { items, total } = data;
 
       yield put({
         type: 'home/load-more/success',
         data: {
-            items: docs.map(convertModelToViewModel),
-            total: meta.hits
+            items,
+            total
         }
       });
 

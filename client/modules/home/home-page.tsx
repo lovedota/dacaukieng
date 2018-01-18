@@ -11,7 +11,6 @@ interface Props {
     total: number;
     selectedItem: any;
 }
-
 class HomePage extends React.Component<Props, any> {
     modal: any;
 
@@ -22,7 +21,7 @@ class HomePage extends React.Component<Props, any> {
     }
 
     componentWillUpdate(nextProps: Props) {
-        if (nextProps.selectedItem !== this.props.selectedItem) {
+        if (this.modal && nextProps.selectedItem !== this.props.selectedItem) {
             this.modal.open();
         }
     }
@@ -31,6 +30,7 @@ class HomePage extends React.Component<Props, any> {
         const { items, isLoaded, total, selectedItem } = this.props;
 
         let content;
+        let modal;
 
         if (!isLoaded) {
             content = (
@@ -51,9 +51,28 @@ class HomePage extends React.Component<Props, any> {
             );
         }
 
+        if (selectedItem) {
+            modal = (
+                <BootstrapModal
+                    ref={(c) => this.modal = c}
+                    title={selectedItem.title}
+                    show={true}
+                >
+                    <iframe
+                        width="100%"
+                        height={450}
+                        src={selectedItem.url}
+                        frameBorder={0}
+                        allowFullScreen={true}
+                    />
+                </BootstrapModal>
+            );
+        }
+
         return (
             <div>
                 {content}
+                {modal}
             </div>
         );
     }

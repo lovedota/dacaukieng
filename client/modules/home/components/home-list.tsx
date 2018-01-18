@@ -6,14 +6,14 @@ import HomeItem from './home-item';
 import HomeActions from '../home-actions';
 
 interface Props {
-    items: any[],
-    total: number
+    items: any[];
+    total: number;
 }
 
 export default (props: Props) => {
     const { items, total } = props;
 
-    let content = items.map((item, index) => {
+    const content = items.map((item, index) => {
         return (
             <HomeItem data={item} key={index} />
         );

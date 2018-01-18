@@ -22,7 +22,7 @@ export default (props) => {
                         {data.description}
                     </p>
                     <p className="home-item-meta">
-                        {data.publishDate}
+                        {data.createdDate}
                     </p>
                 </div>
 

@@ -19,7 +19,11 @@ export default {
         });
     },
 
-    getVideo() {
-        return axios.get('/api/home/video');
+    getVideo(page) {
+        return axios.get('/api/home/video', {
+            params: {
+                page
+            }
+        });
     }
 };
