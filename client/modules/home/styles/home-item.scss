@@ -5,6 +5,7 @@
 
     .home-item-content {
         display: flex;
+        color: #fff;
 
         .home-item-thumb {
             align-self: left;
@@ -13,8 +14,6 @@
 
         .home-item-description {
             align-self: right;
-            font-size: 1.8rem;
-            font-family: "Droid Serif", serif;
         }
     }
 

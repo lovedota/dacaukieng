@@ -1,8 +1,8 @@
-import './styles/layout-navigation.scss';
+import './styles/navigation.scss';
 
-import * as React from "react";
+import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import Routes from '../routes';
+import Routes from 'client/routes';
 
 export default () => {
     return (
