@@ -15,7 +15,7 @@
   ],
   "author": "lovedota21@gmail.com",
   "engines": {
-    "node": "8.9.1"
+    "node": "6.12.3"
   },
   "license": "MIT",
   "dependencies": {
