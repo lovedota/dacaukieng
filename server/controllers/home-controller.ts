@@ -20,9 +20,10 @@ class HomeController {
             }
 
             const jsonObjects = JSON.parse(data);
+            const basePage = page * ITEMS_PER_PAGE;
 
             res.json({
-                items: jsonObjects.data.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE),
+                items: jsonObjects.data.slice(basePage,  basePage + ITEMS_PER_PAGE),
                 total: jsonObjects.data.length
             });
         });
