@@ -13,12 +13,18 @@ export default {
         });
     },
 
-    viewArticle(item) {
+    openArticle(item) {
         dispatch({
-            type: 'home/view-details',
+            type: 'home/view-details/open',
             data: {
                 item
             }
+        });
+    },
+
+    closeArticle() {
+        dispatch({
+            type: 'home/view-details/close'
         });
     }
 };

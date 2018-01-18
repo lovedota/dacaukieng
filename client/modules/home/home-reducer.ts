@@ -38,10 +38,16 @@ export default (state = initState, action) => {
                 total: data.total
             };
 
-        case 'home/view-details':
+        case 'home/view-details/open':
             return {
                 ...state,
                 selectedItem: data.item
+            };
+
+        case 'home/view-details/close':
+            return {
+                ...state,
+                selectedItem: null
             };
 
         default:

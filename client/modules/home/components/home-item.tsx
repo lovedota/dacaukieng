@@ -9,7 +9,7 @@ export default (props) => {
     return (
         <article
             className="home-item"
-            onClick={() => HomeActions.viewArticle(data)}
+            onClick={() => HomeActions.openArticle(data)}
         >
             <div className="home-item-content">
                 <img

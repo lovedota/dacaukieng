@@ -21,16 +21,24 @@ class HomePage extends React.Component<Props, any> {
     }
 
     componentWillUpdate(nextProps: Props) {
-        if (this.modal && nextProps.selectedItem !== this.props.selectedItem) {
+        if (!this.modal || !nextProps.selectedItem) {
+            return;
+        }
+        if (nextProps.selectedItem !== this.props.selectedItem) {
             this.modal.open();
         }
+    }
+
+    componentWillUnmount() {
+        this.modal.close();
+        this.handleCloseModal();
     }
 
     render() {
         const { items, isLoaded, total, selectedItem } = this.props;
 
         let content;
-        let modal;
+        let iframe;
 
         if (!isLoaded) {
             content = (
@@ -52,29 +60,33 @@ class HomePage extends React.Component<Props, any> {
         }
 
         if (selectedItem) {
-            modal = (
-                <BootstrapModal
-                    ref={(c) => this.modal = c}
-                    title={selectedItem.title}
-                    show={true}
-                >
-                    <iframe
-                        width="100%"
-                        height={450}
-                        src={selectedItem.url}
-                        frameBorder={0}
-                        allowFullScreen={true}
-                    />
-                </BootstrapModal>
+            iframe = (
+                <iframe
+                    width="100%"
+                    height={450}
+                    src={`${selectedItem.url}?rel=0&autoplay=1`}
+                    frameBorder={0}
+                    allowFullScreen={true}
+                />
             );
         }
 
         return (
             <div>
                 {content}
-                {modal}
+                <BootstrapModal
+                    ref={(c) => this.modal = c}
+                    title={selectedItem ? selectedItem.title : ''}
+                    onCancel={() => this.handleCloseModal()}
+                >
+                    {iframe}
+                </BootstrapModal>
             </div>
         );
+    }
+
+    handleCloseModal() {
+        HomeActions.closeArticle();
     }
 }
 

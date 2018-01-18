@@ -59,14 +59,14 @@ class BootstrapModal extends React.Component<Props> {
         }
 
         return (
-            <div className="modal fade" ref={(c) => this.div = c}>
+            <div className="modal fade" ref={(c) => this.div = c} tabIndex={-1}>
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
                             <button
                                 type="button"
                                 className="close"
-                                onClick={() => this.close()}
+                                onClick={() => this.handleCancel()}
                             >
                                 &times;
                             </button>
