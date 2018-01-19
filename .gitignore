@@ -1,12 +1,2 @@
 node_modules/
-public/*.js
-public/*.css
-public/*.js.map
-public/*.css.map
-public/*.woff2
-public/*.woff
-public/*.jpg
-public/*.svg
-public/*.ttf
-public/*.eot
-public/*.gif
+public/dist

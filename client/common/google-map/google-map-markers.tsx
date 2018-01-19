@@ -45,20 +45,21 @@ export default class GoogleMapMarkers extends React.Component<Props, State> {
     }
 
     processMarkers(locations) {
-        let defaultOptions = {
+        const defaultOptions = {
             zoom: 12,
             center: new google.maps.LatLng(49.47805, -123.84716),
             mapTypeId: google.maps.MapTypeId.ROADMAP
-        },
-            bounds = new google.maps.LatLngBounds(),
-            map = new google.maps.Map(this.$map[0], defaultOptions),
-            marker;
+        };
+        const bounds = new google.maps.LatLngBounds();
+        const map = new google.maps.Map(this.$map[0], defaultOptions);
 
-        locations.forEach(loc => {
+        let marker;
+
+        locations.forEach((loc) => {
             marker = new MarkerWithLabel({
                 position: loc.position,
                 icon: GoogleMapHelpers.pinSymbol(loc.color),
-                map: map,
+                map,
                 labelContent: loc.label,
                 labelAnchor: new google.maps.Point(3, 30),
                 labelClass: 'labels', // the CSS class for the label
@@ -77,8 +78,8 @@ export default class GoogleMapMarkers extends React.Component<Props, State> {
 
         if (this.state.isLoading) {
             loader = (
-                <div className="loader">
-                    <div className="loader_ajax_small"></div>
+                <div className="loader-small-wrapper">
+                    <div className="loader-small" />
                 </div>
             );
         }
@@ -86,7 +87,7 @@ export default class GoogleMapMarkers extends React.Component<Props, State> {
         return (
             <>
                 {loader}
-                <div id="map-canvas" style={{ height: 400 }}></div>
+                <div id="map-canvas" style={{ height: 500 }} />
             </>
         );
     }

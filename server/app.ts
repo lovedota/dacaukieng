@@ -22,7 +22,7 @@ app.get('/*', (req: express.Request, res: express.Response, next) => {
         return next();
     }
 
-    res.sendFile(path.resolve(appRoot.path, './index.html'));
+    res.sendFile(path.resolve(appRoot.path, './public/dist/index.html'));
 });
 
 export default app;

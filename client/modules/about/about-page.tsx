@@ -22,10 +22,10 @@ class AboutPage extends React.Component<AboutPageProps, any> {
         const { isLoading, items, color } = this.props;
 
         return (
-            <div>
+            <div className="about-page">
                 <div className="container-fluid bg-1 text-center">
                     <h3>Who Am I?</h3>
-                    <img src={MyProfileImg} className="img-circle" alt="Bird" width="350" height="350" />
+                    <img src={MyProfileImg} className="about-page-profile img-fluid img-thumbnail" alt="Hoàng Ngọc Dũng" />
                     <h3>I'm an adventurer</h3>
                 </div>
                 <div className="container-fluid bg-2 text-center">

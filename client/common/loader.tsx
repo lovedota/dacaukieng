@@ -5,5 +5,5 @@ export default () => {
         <div className="loader-wrapper">
             <div className="loader" />
         </div>
-    )
+    );
 };

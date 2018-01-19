@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
+const appRoot = require('app-root-path');
 
 const extractSass = new ExtractTextPlugin({
     filename: "style.css"
@@ -22,13 +23,14 @@ const config = {
             'react-redux',
             'redux-saga'
         ],
-        main: './main.tsx'
+        main: './main.tsx',
+        index: './index.html'
     },
     output: {
-        path: path.resolve(__dirname, './public'),
+        path: path.resolve(__dirname, './public/dist'),
         filename: '[name].js',
         chunkFilename: '[name].chunk.js',
-        publicPath: '/'
+        publicPath: './dist/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
@@ -38,6 +40,31 @@ const config = {
     },
     module: {
         rules: [
+            {
+                test: /\.(html)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "[name].[ext]",
+                        },
+                    },
+                    {
+                        loader: 'extract-loader',
+                        options: {
+                            publicPath: './dist'
+                        }
+                    },
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: true,
+                            removeComments: true,
+                            collapseWhitespace: true
+                        }
+                    },
+                ]
+            },
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
