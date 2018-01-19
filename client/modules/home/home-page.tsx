@@ -77,7 +77,7 @@ class HomePage extends React.Component<Props, any> {
                 <BootstrapModal
                     ref={(c) => this.modal = c}
                     title={selectedItem ? selectedItem.title : ''}
-                    onCancel={() => this.handleCloseModal()}
+                    onHidden={() => this.handleCloseModal()}
                 >
                     {iframe}
                 </BootstrapModal>
