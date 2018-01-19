@@ -12,7 +12,7 @@ const config = {
     entry: {
         vendor: [
             'jquery',
-            'bootstrap-sass',
+            'bootstrap',
             'moment',
             'react',
             'react-dom',

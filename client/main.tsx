@@ -1,5 +1,4 @@
-import 'jquery';
-import 'bootstrap-sass';
+import 'bootstrap';
 import './main.scss';
 
 import React from 'react';
@@ -19,7 +18,7 @@ const Container = (
     <>
         <Navigation />
         <Provider store={RootStore}>
-            <div className="container page-container">
+            <main className="col-12 col-md-12">
                 <Switch>
                     {
 
@@ -34,7 +33,7 @@ const Container = (
                     }
                     <Redirect to="/" />
                 </Switch>
-            </div>
+            </main>
         </Provider>
     </>
 );

@@ -21,17 +21,10 @@ class PlacePage extends React.Component<PlacePageProps, any> {
     render() {
         const { isLoaded, locations } = this.props;
 
-        let content;
-
-        if (!isLoaded) {
-            content = <Loader />;
-        } else {
-            content = <GoogleMapMarkers value={locations} />;
-        }
+        const content = isLoaded ? <GoogleMapMarkers value={locations} /> : <Loader />;
 
         return (
-            <div>
-                <h2>Những nơi còn Đá Cầu Kiểng</h2>
+            <div className="place-page">
                 {content}
             </div>
         );

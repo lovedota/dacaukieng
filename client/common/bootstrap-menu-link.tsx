@@ -8,7 +8,7 @@ export default ({ label, to, activeOnlyWhenExact }) => (
         exact={activeOnlyWhenExact}
         children={({ match }) => (
             <li className={match ? 'active' : ''}>
-                <Link to={to}>
+                <Link to={to} className="nav-link">
                     {label}
                 </Link>
             </li>
