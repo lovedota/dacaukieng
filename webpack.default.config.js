@@ -9,8 +9,8 @@ const extractSass = new ExtractTextPlugin({
     allChunks: true
 });
 
-const extractSassBootstrap = new ExtractTextPlugin({
-    filename: "vender.css"
+const extractMainCss = new ExtractTextPlugin({
+    filename: "vendor.css",
 });
 
 const config = {
@@ -80,7 +80,25 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                exclude: [/node_modules/, /bootstrap/],
+                exclude: [path.resolve(__dirname, 'client', 'modules'), path.resolve(__dirname, 'client', 'common')],
+                use: extractMainCss.extract({
+                    use: [
+                        {
+                            loader: "css-loader"
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ],
+                    fallback: "style-loader"
+                })
+            },
+            {
+                test: /\.scss$/,
+                exclude: [path.resolve(__dirname, 'client', 'main.scss')],
                 use: extractSass.extract({
                     use: [
                         {
@@ -133,7 +151,8 @@ const config = {
             minChunks: 3
         }),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-        extractSass
+        extractSass,
+        extractMainCss
     ]
 }
 

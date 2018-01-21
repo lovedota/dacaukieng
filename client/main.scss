@@ -1,6 +1,5 @@
-@import "style!sass!~bootstrap/scss/bootstrap";
-
 :global {
+  @import "../node_modules/bootstrap/dist/css/bootstrap.css";
   html,
   body {
     height: 100%;
