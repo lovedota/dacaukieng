@@ -81,7 +81,7 @@ const config = {
             {
                 test: /\.scss$/,
                 exclude: [path.resolve(__dirname, 'client', 'modules'), path.resolve(__dirname, 'client', 'common')],
-                use: extractMainCss.extract({
+                use: extractSass.extract({
                     use: [
                         {
                             loader: "css-loader"
@@ -151,8 +151,7 @@ const config = {
             minChunks: 3
         }),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-        extractSass,
-        extractMainCss
+        extractSass
     ]
 }
 
