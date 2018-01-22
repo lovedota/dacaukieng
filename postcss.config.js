@@ -1,7 +1,15 @@
 module.exports = {
     plugins: [
         require('precss'),
-        require('autoprefixer'),
+        require('autoprefixer')({
+            browsers: [
+                '>1%',
+                'last 4 versions',
+                'Firefox ESR',
+                'not ie < 9'
+            ],
+            flexbox: 'no-2009'
+        }),
         require('postcss-import'),
         require('postcss-nested')({}),
         require('postcss-global-nested')({}),

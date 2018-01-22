@@ -5,12 +5,8 @@ const WebpackShellPlugin = require('webpack-shell-plugin');
 const appRoot = require('app-root-path');
 
 const extractSass = new ExtractTextPlugin({
-    filename: "style.css",
+    filename: "assets/style.css",
     allChunks: true
-});
-
-const extractMainCss = new ExtractTextPlugin({
-    filename: "vendor.css",
 });
 
 const config = {
@@ -32,10 +28,10 @@ const config = {
         index: './index.html'
     },
     output: {
-        path: path.resolve(__dirname, './public/dist'),
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js',
-        publicPath: './dist/'
+        path: path.resolve(__dirname, './public/'),
+        filename: 'assets/[name].js',
+        chunkFilename: 'assets/[name].chunk.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
@@ -57,7 +53,7 @@ const config = {
                     {
                         loader: 'extract-loader',
                         options: {
-                            publicPath: './dist'
+                             publicPath: "../"
                         }
                     },
                     {
@@ -123,7 +119,9 @@ const config = {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000
+                    limit: 10000,
+                    outputPath: './assets/images/',
+                    publicPath: '/assets/images/'
                 }
             },
             {
@@ -144,11 +142,6 @@ const config = {
             minChunks(module, count) {
                 return module.resource && module.resource.indexOf('node_modules') !== -1
             }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            children: true,
-            async: true,
-            minChunks: 3
         }),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
         extractSass
