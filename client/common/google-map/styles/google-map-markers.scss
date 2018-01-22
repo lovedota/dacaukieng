@@ -1,25 +1,27 @@
-.labels {
-    color: #ffffff;
-    background-color: red;
-    font-family: "Lucida Grande", "Arial", sans-serif;
-    font-size: 10px;
-    text-align: center;
-    width: 120px;
-}
+:global {
+    .labels {
+        color: #ffffff;
+        background-color: red;
+        font-family: "Lucida Grande", "Arial", sans-serif;
+        font-size: 10px;
+        text-align: center;
+        width: 120px;
+    }
 
-.loader-small-wrapper {
-    border: 1px solid #ccc;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    .loader-small-wrapper {
+        border: 1px solid #ccc;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
 
-    .loader-small {
-        border: 2px solid #f3f3f3 !important;
-        border-radius: 50%;
-        border-top: 2px solid #2D2D2D !important;
-        width: 29px;
-        height: 29px;
-        animation: spin_loader_ajax_small 2s linear infinite;
+        .loader-small {
+            border: 2px solid #f3f3f3 !important;
+            border-radius: 50%;
+            border-top: 2px solid #2D2D2D !important;
+            width: 29px;
+            height: 29px;
+            animation: spin_loader_ajax_small 2s linear infinite;
+        }
     }
 }
 
