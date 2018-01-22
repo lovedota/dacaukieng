@@ -5,6 +5,7 @@ import * as methodOverride from 'method-override';
 import * as appRoot from 'app-root-path';
 import * as path from 'path';
 import * as favicon from 'serve-favicon';
+import * as expressStaticGzip from 'express-static-gzip';
 
 const app = express();
 
@@ -14,21 +15,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(favicon(path.join(appRoot.path, 'public', 'favicon.ico')));
-app.use('/assets', express.static(path.join(appRoot.path, './public/assets')));
 
-// app.get('*.js', (req, res, next) => {
-//     req.url = req.url + '.gz';
-//     res.set('Content-Encoding', 'gzip');
-//     res.set('Content-Type', 'text/javascript');
-//     next();
-// });
-
-// app.get('*.css', (req, res, next) => {
-//     req.url = req.url + '.gz';
-//     res.set('Content-Encoding', 'gzip');
-//     res.set('Content-Type', 'text/css');
-//     next();
-// });
+if (process.env.NODE_ENV === 'dev') {
+    app.use('/assets', express.static(path.join(appRoot.path, './public/assets')));
+} else {
+    app.use('/assets', expressStaticGzip(path.join(appRoot.path, './public/assets')));
+}
 
 app.get('*', (req: express.Request, res: express.Response, next) => {
     if (req.url.includes('api')) {
