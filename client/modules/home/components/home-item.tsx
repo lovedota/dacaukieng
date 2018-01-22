@@ -1,27 +1,29 @@
-import '../styles/home-item.scss';
-
+import styles from '../styles/home-item.scss';
+import classNames from 'classnames/bind';
 import React from 'react';
 import HomeActions from '../home-actions';
+
+const cx = classNames.bind(styles);
 
 export default (props) => {
     const { data } = props;
 
     return (
         <article
-            className="home-item"
+            className={cx('home-item')}
             onClick={() => HomeActions.openArticle(data)}
         >
-            <div className="home-item-content">
+            <div className={cx('home-item-content')}>
                 <img
                     src={data.thumbnail}
                     alt="post img"
-                    className="home-item-thumb img-responsive img-thumbnail"
+                    className={cx('home-item-thumb', 'img-responsive', 'img-thumbnail')}
                 />
-                <div className="home-item-description">
+                <div className={cx('home-item-description')}>
                     <p>
                         {data.description}
                     </p>
-                    <p className="home-item-meta">
+                    <p className={cx('home-item-meta')}>
                         {data.createdDate}
                     </p>
                 </div>

@@ -5,7 +5,12 @@ const WebpackShellPlugin = require('webpack-shell-plugin');
 const appRoot = require('app-root-path');
 
 const extractSass = new ExtractTextPlugin({
-    filename: "style.css"
+    filename: "style.css",
+    allChunks: true
+});
+
+const extractMainCss = new ExtractTextPlugin({
+    filename: "vendor.css",
 });
 
 const config = {
@@ -75,10 +80,34 @@ const config = {
             },
             {
                 test: /\.scss$/,
+                exclude: [path.resolve(__dirname, 'client', 'modules'), path.resolve(__dirname, 'client', 'common')],
                 use: extractSass.extract({
                     use: [
                         {
                             loader: "css-loader"
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ],
+                    fallback: "style-loader"
+                })
+            },
+            {
+                test: /\.scss$/,
+                exclude: [path.resolve(__dirname, 'client', 'main.scss')],
+                use: extractSass.extract({
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                modules: true,
+                                importLoaders: 2,
+                                localIdentName: '[name]__[local]--[hash:base64:5]'
+                            }
                         },
                         {
                             loader: 'postcss-loader'
