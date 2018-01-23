@@ -27,7 +27,6 @@ export default (props) => {
                         {data.createdDate}
                     </p>
                 </div>
-
             </div>
         </article>
     );
