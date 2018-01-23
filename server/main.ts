@@ -47,5 +47,6 @@ function onListening() {
         ? 'pipe ' + addr
         : 'port ' + addr.port;
 
+    // tslint:disable-next-line:no-console
     console.log('Running in localhost:8080');
 }

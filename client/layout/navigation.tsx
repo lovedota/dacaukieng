@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import BootstrapMenuLink from 'client/common/bootstrap-menu-link';
 import Routes from 'client/routes';
 
 export default () => {

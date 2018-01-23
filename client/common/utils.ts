@@ -10,7 +10,7 @@ export function randomString() {
     }
 
     return text;
-};
+}
 
 export function getRandomColor() {
     const letters = '0123456789ABCDEF';
@@ -22,7 +22,7 @@ export function getRandomColor() {
     }
 
     return color;
-};
+}
 
 export function randomDate(start, end) {
     return moment(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
