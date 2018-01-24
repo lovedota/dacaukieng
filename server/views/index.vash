@@ -1,0 +1,28 @@
+ <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dũng Hoàng">
+    <meta name="description" content="Đá Cầu Kiểng khác với Đá Cầu là bạn chỉ có 1 pass để đưa cầu qua đối phương một cách nhanh nhất, vì thế Đá Cầu Kiểng phát triển thêm nhiều chiêu thức mới như Đá Apsara, Đá Số Bốn, Cánh Gà để đá cầu qua nhanh nhất.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="twitter:card" value="summary">
+    <meta property="og:title" content="Đá Cầu Kiểng - Style ShuttleCock" />
+    <meta property="og:type" content="Đá Cầu Kiểng - Style ShuttleCock" />
+    <meta property="og:url" content="http://www.dacaukieng.xyz/" />
+    <meta property="og:image" itemprop="thumbnailUrl" content="https://mwbokg-bn1305.files.1drv.com/y4mVlax0iKB-4Qq-9OXPG-YupcpeVCGcuezTBLIXe6tdrr6Hk3ouCctLzUYJLM7lY3z-H2oqaFGgLyLTg98iOurO3a1PYfqD5SWezC3GmMh8dNRiXLtUgkBX23ooCYCrSwcriPRLCGzJAheTIQlvAZ5wSUNtc7vhvAPHNxQE6nS004wemwM9Ijaj22ldITLE-6jzAT08LfOtGQD2cb-JXPbhA/dung-03.png" />
+    <meta property="og:description" content="Đá Cầu Kiểng khác với Đá Cầu là bạn chỉ có 1 pass để đưa cầu qua đối phương một cách nhanh nhất, vì thế Đá Cầu Kiểng phát triển thêm nhiều chiêu thức mới như Đá Apsara, Đá Số Bốn, Cánh Gà để đá cầu qua nhanh nhất." />
+
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link href='@model.style' rel='stylesheet' type='text/css' />
+    <title>Đá Cầu Kiểng - Style ShuttleCock</title>
+</head>
+    <body>
+        <div id='container' class="cover-container d-flex h-100 p-3 mx-auto flex-column"></div>
+        <script src='@model.vendor' type='text/javascript'></script>
+        <script src='@model.main' type='text/javascript'></script>
+    </body>
+</html>
