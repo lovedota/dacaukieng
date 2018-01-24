@@ -9,6 +9,8 @@ const extractSass = new ExtractTextPlugin({
     allChunks: true
 });
 
+const ManifestPlugin = require('webpack-manifest-plugin');
+
 const config = {
     context: path.resolve(__dirname, './client'),
     entry: {
@@ -29,8 +31,8 @@ const config = {
     },
     output: {
         path: path.resolve(__dirname, './public/'),
-        filename: 'assets/[name].js',
-        chunkFilename: 'assets/[name].chunk.js',
+        filename: 'assets/[name].[hash].js',
+        chunkFilename: 'assets/[name].[chunkhash].chunk.js',
         publicPath: '/'
     },
     resolve: {
@@ -144,6 +146,7 @@ const config = {
             }
         }),
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+        new ManifestPlugin(),
         extractSass
     ]
 }

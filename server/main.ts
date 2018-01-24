@@ -1,5 +1,8 @@
 import { createServer } from 'http';
 import app from './app';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as appRoot from 'app-root-path';
 import '../server/controllers/home-controller';
 
 const httpPort = process.env.PORT || 8080;
@@ -46,6 +49,16 @@ function onListening() {
     const bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
+
+    fs.readFile(path.join(appRoot.path, 'public', 'manifest.json'), 'utf8', (err, data) => {
+        const json = JSON.parse(data);
+
+        app.locals.assetUrls = {
+            style: json['main.css'],
+            main: json['main.js'],
+            vendor: json['vendor.js']
+        };
+    });
 
     // tslint:disable-next-line:no-console
     console.log('Running in localhost:8080');
