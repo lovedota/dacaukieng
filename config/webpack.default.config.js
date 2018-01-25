@@ -12,7 +12,7 @@ const extractSass = new ExtractTextPlugin({
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const config = {
-    context: path.resolve(__dirname, './client'),
+    context: path.resolve(appRoot.path, './client'),
     entry: {
         vendor: [
             'jquery',
@@ -30,7 +30,7 @@ const config = {
         index: './index.html'
     },
     output: {
-        path: path.resolve(__dirname, './public/'),
+        path: path.resolve(appRoot.path, './public/'),
         filename: 'assets/[name].[hash].js',
         chunkFilename: 'assets/[name].[chunkhash].chunk.js',
         publicPath: '/'
@@ -38,7 +38,7 @@ const config = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
         alias: {
-            'client': path.resolve(__dirname, './client')
+            'client': path.resolve(appRoot.path, './client')
         }
     },
     module: {
@@ -73,19 +73,24 @@ const config = {
                 loader: 'ts-loader',
                 exclude: /(node_modules|bower_components)/,
                 query: {
-                    configFile: path.resolve(__dirname, './tsconfig.client.json')
+                    configFile: path.join(appRoot.path,  './tsconfig.client.json')
                 }
             },
             {
                 test: /\.scss$/,
-                exclude: [path.resolve(__dirname, 'client', 'modules'), path.resolve(__dirname, 'client', 'common')],
+                exclude: [path.resolve(appRoot.path, 'client', 'modules'), path.resolve(appRoot.path, 'client', 'common')],
                 use: extractSass.extract({
                     use: [
                         {
                             loader: "css-loader"
                         },
                         {
-                            loader: 'postcss-loader'
+                            loader: 'postcss-loader',
+                            options: {
+                                config: {
+                                    path: path.resolve(appRoot.path, 'config', 'postcss.config.js')
+                                }
+                            }
                         },
                         {
                             loader: "sass-loader"
@@ -96,7 +101,7 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                exclude: [path.resolve(__dirname, 'client', 'main.scss')],
+                exclude: [path.resolve(appRoot.path, 'client', 'main.scss')],
                 use: extractSass.extract({
                     use: [
                         {
@@ -108,7 +113,12 @@ const config = {
                             }
                         },
                         {
-                            loader: 'postcss-loader'
+                            loader: 'postcss-loader',
+                            options: {
+                                config: {
+                                    path: path.resolve(appRoot.path, 'config', 'postcss.config.js')
+                                }
+                            }
                         },
                         {
                             loader: "sass-loader"
@@ -127,17 +137,14 @@ const config = {
                 }
             },
             {
-                test: require.resolve('./node_modules/jquery/dist/jquery.js'),
+                test: path.resolve(appRoot.path, './node_modules/jquery/dist/jquery.js'),
                 loader: 'expose-loader?$!expose-loader?jQuery'
             }
         ]
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({
-            minimize: false,
-            options: {
-                context: __dirname
-            }
+            minimize: false
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

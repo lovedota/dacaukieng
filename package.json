@@ -1,13 +1,13 @@
 {
-  "name": "react-redux-lazy-load",
+  "name": "dacaukieng",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "ts-node server/main.ts",
-    "test": "jest",
-    "dev": "cross-env NODE_ENV=dev webpack --watch",
-    "prod": "webpack -p --config=webpack.production.config.js",
+    "test": "jest --config=./jest.config.js",
+    "dev": "cross-env NODE_ENV=dev webpack --config=./config/webpack.config.js --watch",
+    "prod": "webpack -p --config=./config/webpack.production.config.js",
     "heroku-postbuild": "echo \"Succcess: Deploy Successfully\""
   },
   "pre-commit": [
