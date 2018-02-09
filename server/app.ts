@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as morgan from 'morgan';
-import * as bodyParser from 'body-parser';
-import * as methodOverride from 'method-override';
-import * as appRoot from 'app-root-path';
-import * as path from 'path';
-import * as favicon from 'serve-favicon';
-import * as expressStaticGzip from 'express-static-gzip';
-import * as minifyHTML from 'express-minify-html';
+import express from 'express';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import methodOverride from 'method-override';
+import appRoot from 'app-root-path';
+import path from 'path';
+import favicon from 'serve-favicon';
+import expressStaticGzip from 'express-static-gzip';
+import minifyHTML from 'express-minify-html';
 
 const app = express();
 const ASSETS_PATH = path.join(appRoot.path, './public/assets');

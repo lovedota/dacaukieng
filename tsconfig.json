@@ -20,7 +20,8 @@
         "paths": {
             "client/*": ["./client/*"],
             "server/*": ["./server/*"]
-        }
+        },
+        "esModuleInterop": true
     },
     "exclude": [
         "node_modules"

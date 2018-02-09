@@ -1,7 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as appRoot from 'app-root-path';
-import * as web from 'express-decorators';
+import fs from 'fs';
+import path from 'path';
+import appRoot from 'app-root-path';
+import web from 'express-decorators';
 import app from '../app';
 import { setTimeout } from 'timers';
 
