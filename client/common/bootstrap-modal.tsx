@@ -44,7 +44,8 @@ class BootstrapModal extends React.Component<Props> {
             confirmButton = (
                 <button
                     onClick={() => this.handleConfirm()}
-                    className="btn btn-primary">
+                    className="btn btn-primary"
+                >
                     {this.props.confirm}
                 </button>
             );

@@ -1,5 +1,3 @@
-import * as moment from 'moment';
-
 const initState = {
     isLoaded: false,
     locations: []

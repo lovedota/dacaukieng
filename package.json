@@ -8,9 +8,11 @@
     "test": "jest --config=./jest.config.js",
     "dev": "cross-env NODE_ENV=dev webpack --config=./config/webpack.config.js --watch",
     "prod": "webpack -p --config=./config/webpack.production.config.js",
+    "tslint": "tslint -c tslint.json --project tsconfig.json",
     "heroku-postbuild": "echo \"Succcess: Deploy Successfully\""
   },
   "pre-commit": [
+    "tslint",
     "test"
   ],
   "author": "lovedota21@gmail.com",

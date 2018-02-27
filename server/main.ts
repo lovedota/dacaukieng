@@ -47,8 +47,8 @@ function onError(error) {
 function onListening() {
     const addr = httpServer.address();
     const bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
+        ? 'http://www.dacaukieng.xyz'
+        : `http://localhost:${addr.port}`;
 
     fs.readFile(path.join(appRoot.path, 'public', 'manifest.json'), 'utf8', (err, data) => {
         const json = JSON.parse(data);
@@ -61,5 +61,5 @@ function onListening() {
     });
 
     // tslint:disable-next-line:no-console
-    console.log('Running in localhost:8080');
+    console.log(`Running in ${bind}`);
 }

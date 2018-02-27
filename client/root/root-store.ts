@@ -4,7 +4,6 @@ import { fork } from 'redux-saga/effects';
 
 import rootReducer from './root-reducer';
 import rootSaga from './root-saga';
-import { moduleName } from 'client/modules/about';
 
 export const sagaMiddleware = createSagaMiddleware();
 
@@ -31,7 +30,7 @@ export const createReducers = (moduleName, reducer) => {
     return combineReducers(injectedReducers);
 };
 
-let store = createStore(
+const store = createStore(
     createReducers('root', rootReducer), applyMiddleware(sagaMiddleware)
 );
 

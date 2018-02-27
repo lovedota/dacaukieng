@@ -8,9 +8,7 @@ import { connect } from 'react-redux';
 const cx = classNames.bind(styles);
 
 type AboutPageProps = {
-    isLoading: boolean;
-    items: any[];
-    color: string;
+
 };
 
 class AboutPage extends React.Component<AboutPageProps, any> {
@@ -19,8 +17,6 @@ class AboutPage extends React.Component<AboutPageProps, any> {
     }
 
     render() {
-        const { isLoading, items, color } = this.props;
-
         return (
             <div className={cx('about-page')}>
                 <div className={cx('container-fluid', 'bg-1', 'text-center')}>
@@ -28,7 +24,8 @@ class AboutPage extends React.Component<AboutPageProps, any> {
                     <img
                         src={MyProfileImg}
                         className={cx('about-page-profile', 'img-fluid', 'img-thumbnail')}
-                        alt="Hoàng Ngọc Dũng" />
+                        alt="Hoàng Ngọc Dũng"
+                    />
                     <h3>I'm an adventurer</h3>
                 </div>
                 <div className={cx('container-fluid', 'bg-2', 'text-center')}>

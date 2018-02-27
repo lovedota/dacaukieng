@@ -3,7 +3,6 @@ import * as path from 'path';
 import * as appRoot from 'app-root-path';
 import * as web from 'express-decorators';
 import app from '../app';
-import { setTimeout } from 'timers';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -30,7 +29,7 @@ class HomeController {
 
     @web.get('/places')
     async getPlaces(req: any, res: any) {
-        let locations = [
+        const locations = [
             {
                 label: `Công Viên Văn Lang`,
                 position: {lat: 10.7566155, lng: 106.6657839},
