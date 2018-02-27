@@ -1,10 +1,9 @@
-import thumbnailDefault from './styles/images/thumbnail-default.jpg';
 import { put, takeEvery, select } from 'redux-saga/effects';
 import HomeServices from './home-services';
 
 function* fetchItems(action) {
     try {
-        const { q, page, isLoaded } = yield select((state: any) => state.home);
+        const { page, isLoaded } = yield select((state: any) => state.home);
 
         const { data } = yield HomeServices.getVideo(page);
 
